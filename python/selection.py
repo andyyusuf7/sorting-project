@@ -1,37 +1,37 @@
-def bubble_sort(arr):
+def selection_sort(arr):
     n = len(arr)
-    
+
     for i in range(n - 1):
         print(f"\nPass {i+1}:")
-        
-        for j in range(n - i - 1):
-            print(f"  Bandingkan {arr[j]} dan {arr[j+1]}", end=" -> ")
-            
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-                print("Tukar")
+        min_idx = i
+
+        for j in range(i + 1, n):
+            print(f"Bandingkan {arr[min_idx]} dengan {arr[j]}", end=" ")
+
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+                print("-> Minimum baru")
             else:
-                print("Tidak ditukar")
-            
+                print("-> Tidak berubah")
+
             print("  ", arr)
-    
+
+        # Tukar posisi
+        if min_idx != i:
+            print(f"Tukar {arr[i]} dengan {arr[min_idx]}")
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+        print("Hasil pass:", arr)
+
     return arr
 
 
-# Input jumlah data
+# Input
 n = int(input("Masukkan jumlah data: "))
-
-# Input data (dipastikan sesuai jumlah)
-while True:
-    data = list(map(int, input("Masukkan data (pisah spasi): ").split()))
-    
-    if len(data) != n:
-        print(f"Jumlah data harus {n}, coba lagi!")
-    else:
-        break
+data = list(map(int, input("Masukkan data (pisah spasi): ").split()))
 
 # Proses
-hasil = bubble_sort(data)
+hasil = selection_sort(data)
 
-# Output akhir
+# Output
 print("\nHasil akhir:", hasil)

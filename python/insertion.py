@@ -27,7 +27,7 @@ def insertion_sort(arr):
 n = int(input("Masukkan jumlah data: "))
 
 while True:
-    data = list(map(int, input("Masukkan data: ").split()))
+    data = list(map(int, input("Masukkan data (pisah spasi): ").split()))
     if len(data) != n:
         print(f"Harus {n} data!")
     else:

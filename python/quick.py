@@ -1,40 +1,34 @@
-def insertion_sort(arr):
-    n = len(arr)
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
 
-    for i in range(1, n):
-        key = arr[i]
-        j = i - 1
+    pivot = arr[-1]
+    print(f"\nPivot = {pivot}")
 
-        print(f"\nPass {i}:")
-        print(f"Ambil key = {key}")
+    left = []
+    right = []
 
-        # Geser elemen yang lebih besar dari key
-        while j >= 0 and arr[j] > key:
-            print(f"Bandingkan {arr[j]} > {key} -> Geser")
-            arr[j + 1] = arr[j]
-            j -= 1
-            print(" ", arr)
+    for x in arr[:-1]:
+        print(f"Bandingkan {x} dengan {pivot}", end=" ")
+        if x <= pivot:
+            left.append(x)
+            print("-> Masuk kiri")
+        else:
+            right.append(x)
+            print("-> Masuk kanan")
 
-        # Masukkan key ke posisi yang benar
-        arr[j + 1] = key
-        print(f"Masukkan key di posisi {j+1}")
-        print(" ", arr)
+    print("Kiri :", left)
+    print("Kanan:", right)
 
-    return arr
+    return quick_sort(left) + [pivot] + quick_sort(right)
 
 
 # Input
 n = int(input("Masukkan jumlah data: "))
-
-while True:
-    data = list(map(int, input("Masukkan data: ").split()))
-    if len(data) != n:
-        print(f"Harus {n} data!")
-    else:
-        break
+data = list(map(int, input("Masukkan data: ").split()))
 
 # Proses
-hasil = insertion_sort(data)
+hasil = quick_sort(data)
 
 # Output
 print("\nHasil akhir:", hasil)

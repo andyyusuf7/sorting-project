@@ -43,7 +43,7 @@ def merge_sort(arr, l, r):
 
 # Input
 n = int(input("Masukkan jumlah data: "))
-data = list(map(int, input("Masukkan data: ").split()))
+data = list(map(int, input("Masukkan data (pisah spasi): ").split()))
 
 merge_sort(data, 0, n-1)
 
